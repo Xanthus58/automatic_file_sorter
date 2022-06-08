@@ -16,6 +16,7 @@ fn cls(){
 
 
 fn main() {
+    fs::remove_dir_all("logs");
     println!("Made by Xanthus58");
     println!("You can see more information on my website https://xanthus58.github.io/Xanthus58/");
     println!("If you notice any files not being sorted make an issue here https://github.com/Xanthus58/automatic_file_sorter/issues");
