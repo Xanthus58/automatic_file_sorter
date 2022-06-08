@@ -16,7 +16,7 @@ fn cls(){
 
 
 fn main() {
-    fs::remove_dir_all("logs");
+    fs::remove_dir_all("logs").expect("err");
     println!("Made by Xanthus58");
     println!("You can see more information on my website https://xanthus58.github.io/Xanthus58/");
     println!("If you notice any files not being sorted make an issue here https://github.com/Xanthus58/automatic_file_sorter/issues");
@@ -74,7 +74,7 @@ fn main() {
                 .expect("create failed");
             
             file.write_all(format!("{:?}", file_name).as_bytes()).expect("write failed");
-            file.write_all(format!(" Moved to ").as_bytes()).expect("write failed");
+            file.write_all(" Moved to ".as_bytes()).expect("write failed");
             file.write_all(format!("{:?}\n", download_dir.display()).as_bytes()).expect("write failed");
             
             print!("Name: ");
