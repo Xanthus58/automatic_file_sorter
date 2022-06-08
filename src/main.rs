@@ -1,7 +1,7 @@
 #![allow(unused_variables)]
 #![allow(dead_code)]
 
-use std::{fs};
+use std::{fs,io::Write};
 use std::path::Path;
 use colour::*;
 
@@ -61,6 +61,21 @@ fn main() {
             let download_dir = Path::new(download_dir);
             fs::create_dir_all(download_dir).unwrap();
             fs::rename(&path, download_dir.join(file_name)).unwrap();
+
+            let log_dir = "Logs";
+            let log_file = "/logs.txt";
+            fs::create_dir_all(log_dir).unwrap();
+
+            let mut file = std::fs::OpenOptions::new()
+                .append(true)
+                .create(true)
+                .open("logs/Logs.txt")
+                .expect("create failed");
+            
+            file.write_all(format!("{:?}", file_name).as_bytes()).expect("write failed");
+            file.write_all(format!(" Moved to ").as_bytes()).expect("write failed");
+            file.write_all(format!("{:?}\n", download_dir.display()).as_bytes()).expect("write failed");
+            
             print!("Name: ");
             green!("{} ",path.display());
             print!("Moved to ");
