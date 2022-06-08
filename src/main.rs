@@ -16,7 +16,6 @@ fn cls(){
 
 
 fn main() {
-    fs::remove_dir_all("logs").expect("err");
     println!("Made by Xanthus58");
     println!("You can see more information on my website https://xanthus58.github.io/Xanthus58/");
     println!("If you notice any files not being sorted make an issue here https://github.com/Xanthus58/automatic_file_sorter/issues");
@@ -39,6 +38,7 @@ fn main() {
                 Some(ext) if ext == "mp4" => "Videos",
                 Some(ext) if ext == "mkv" => "Videos",
                 Some(ext) if ext == "avi" => "Videos",
+                Some(ext) if ext == "webm" => "Videos",
                 Some(ext) if ext == "mp3" => "Music",
                 Some(ext) if ext == "ogg" => "Music",
                 Some(ext) if ext == "wma" => "Music",
@@ -48,15 +48,17 @@ fn main() {
                 Some(ext) if ext == "rar" => "Files",
                 Some(ext) if ext == "7z" => "Files",
                 Some(ext) if ext == "mov" => "Videos",
-                Some(ext) if ext == "txt" => "Doccuments",
-                Some(ext) if ext == "pdf" => "Doccuments",
-                Some(ext) if ext == "doc" => "Doccuments",
-                Some(ext) if ext == "docx" => "Doccuments",
-                Some(ext) if ext == "html" => "Doccuments",
-                Some(ext) if ext == "htm" => "Doccuments",
-                Some(ext) if ext == "ppt" => "Doccuments",
-                Some(ext) if ext == "pptx" => "Doccuments",
-                Some(ext) if ext == "clsx" => "Doccuments",
+                Some(ext) if ext == "txt" => "Documents",
+                Some(ext) if ext == "pdf" => "Documents",
+                Some(ext) if ext == "doc" => "Documents",
+                Some(ext) if ext == "docx" => "Documents",
+                Some(ext) if ext == "html" => "Documents",
+                Some(ext) if ext == "htm" => "Documents",
+                Some(ext) if ext == "ppt" => "Documents",
+                Some(ext) if ext == "pptx" => "Documents",
+                Some(ext) if ext == "clsx" => "Documents",
+                Some(ext) if ext == "torrent" => "Torrents",
+                Some(ext) if ext == "msi" => "Programs",
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
