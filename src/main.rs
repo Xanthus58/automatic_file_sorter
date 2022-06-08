@@ -16,6 +16,10 @@ fn cls(){
 
 
 fn main() {
+    println!("Made by Xanthus58");
+    println!("You can see more information on my website https://xanthus58.github.io/Xanthus58/");
+    println!("If you notice any files not being sorted make an issue here https://github.com/Xanthus58/automatic_file_sorter/issues");
+    println!("\n-Logs-");
     loop{
         let entries = fs::read_dir("./").unwrap();
         for entry in entries {
@@ -55,7 +59,6 @@ fn main() {
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
-
             fs::create_dir_all(download_dir).unwrap();
             fs::rename(&path, download_dir.join(file_name)).unwrap();
             print!("Name: ");
