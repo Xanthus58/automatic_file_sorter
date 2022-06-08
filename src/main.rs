@@ -59,11 +59,11 @@ fn main() {
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
-            fs::create_dir_all(download_dir).unwrap();
+            fs::create_dir_all(download_dir).unwrap()
             fs::rename(&path, download_dir.join(file_name)).unwrap();
             print!("Name: ");
             green!("{} ",path.display());
-            print!("Moved to ");
+            print!("Moved to ")
             red!("{}\n",download_dir.display());
         }
     }
