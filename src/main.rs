@@ -60,6 +60,8 @@ fn main() {
                 Some(ext) if ext == "clsx" => "Documents",
                 Some(ext) if ext == "torrent" => "Torrents",
                 Some(ext) if ext == "msi" => "Programs",
+                Some(ext) if ext == "apk" => "Programs",
+                Some(ext) if ext == "iso" => "System Images",
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
