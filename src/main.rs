@@ -30,25 +30,31 @@ fn main() {
                 None => continue,
             };
             let download_dir = match path.extension() {
+                // Pictures
                 Some(ext) if ext == "jpg" => "Pictures",
                 Some(ext) if ext == "jpeg" => "Pictures",
                 Some(ext) if ext == "png" => "Pictures",
                 Some(ext) if ext == "psd" => "Pictures",
                 Some(ext) if ext == "svg" => "Pictures",
                 Some(ext) if ext == "ai" => "Pictures",
+                // Videos
                 Some(ext) if ext == "mp4" => "Videos",
                 Some(ext) if ext == "mkv" => "Videos",
                 Some(ext) if ext == "avi" => "Videos",
                 Some(ext) if ext == "webm" => "Videos",
-                Some(ext) if ext == "mp3" => "Music",
-                Some(ext) if ext == "ogg" => "Music",
-                Some(ext) if ext == "wma" => "Music",
+                Some(ext) if ext == "mov" => "Videos",
+                // Music
+                Some(ext) if ext == "mp3" => "Audio",
+                Some(ext) if ext == "ogg" => "Audio",
+                Some(ext) if ext == "wma" => "Audio",
+                // Gifs
                 Some(ext) if ext == "gif" => "Gifs",
                 Some(ext) if ext == "apng" => "Gifs",
+                // Files
                 Some(ext) if ext == "zip" => "Files",
                 Some(ext) if ext == "rar" => "Files",
                 Some(ext) if ext == "7z" => "Files",
-                Some(ext) if ext == "mov" => "Videos",
+                // Doccuments
                 Some(ext) if ext == "txt" => "Documents",
                 Some(ext) if ext == "pdf" => "Documents",
                 Some(ext) if ext == "doc" => "Documents",
@@ -58,10 +64,19 @@ fn main() {
                 Some(ext) if ext == "ppt" => "Documents",
                 Some(ext) if ext == "pptx" => "Documents",
                 Some(ext) if ext == "clsx" => "Documents",
+                // Torrents
                 Some(ext) if ext == "torrent" => "Torrents",
+                // Programs
                 Some(ext) if ext == "msi" => "Programs",
                 Some(ext) if ext == "apk" => "Programs",
-                Some(ext) if ext == "iso" => "System Images",
+                Some(ext) if ext == "exe" => "Programs",
+                // System Images
+                Some(ext) if ext == "iso" => "Images",
+                // Fonts
+                Some(ext) if ext == "fnt" => "Fonts",
+                Some(ext) if ext == "fon" => "Fonts",
+                Some(ext) if ext == "otf" => "Fonts",
+                Some(ext) if ext == "ttf" => "Fonts",
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
