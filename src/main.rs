@@ -54,43 +54,56 @@ fn main() {
                 Some(ext) if ext == "zip" => "Files",
                 Some(ext) if ext == "rar" => "Files",
                 Some(ext) if ext == "7z" => "Files",
+                Some(ext) if ext == "cfg" => "Files",
                 // Doccuments
                 Some(ext) if ext == "txt" => "Documents",
                 Some(ext) if ext == "pdf" => "Documents",
                 Some(ext) if ext == "doc" => "Documents",
                 Some(ext) if ext == "docx" => "Documents",
-                Some(ext) if ext == "html" => "Documents",
                 Some(ext) if ext == "htm" => "Documents",
                 Some(ext) if ext == "ppt" => "Documents",
                 Some(ext) if ext == "pptx" => "Documents",
                 Some(ext) if ext == "clsx" => "Documents",
                 // Torrents
                 Some(ext) if ext == "torrent" => "Torrents",
-                // Programs
-                Some(ext) if ext == "msi" => "Programs",
-                Some(ext) if ext == "apk" => "Programs",
-                Some(ext) if ext == "exe" => "Programs",
                 // System Images
-                Some(ext) if ext == "iso" => "Images",
+                Some(ext) if ext == "iso" => "SystemImages",
                 // Fonts
                 Some(ext) if ext == "fnt" => "Fonts",
                 Some(ext) if ext == "fon" => "Fonts",
                 Some(ext) if ext == "otf" => "Fonts",
                 Some(ext) if ext == "ttf" => "Fonts",
+                // Programming
+                Some(ext) if ext == "py" => "Programming/Python",
+                Some(ext) if ext == "rs" => "Programming/Rust",
+                Some(ext) if ext == "js" => "Programming/JavaScript",
+                Some(ext) if ext == "jar" => "Programming/Java",
+                Some(ext) if ext == "html" => "Programming/HTML",
+                Some(ext) if ext == "c" => "Programming/C",
+                Some(ext) if ext == "cpp" => "Programming/C++",
+                Some(ext) if ext == "cs" => "Programming/C#",
+                Some(ext) if ext == "go" => "Programming/Go",
+                Some(ext) if ext == "swift" => "Programming/Swift",
+                Some(ext) if ext == "php" => "Programming/PHP",
+                Some(ext) if ext == "r" => "Programming/R",
+                // Applications
+                Some(ext) if ext == "msi" => "Applications",
+                Some(ext) if ext == "apk" => "Applications",
+                Some(ext) if ext == "exe" => "Applications",
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
             fs::create_dir_all(download_dir).unwrap();
             fs::rename(&path, download_dir.join(file_name)).unwrap();
 
-            let log_dir = "Logs";
+            let log_dir = "sorter_logs";
             let log_file = "/logs.txt";
             fs::create_dir_all(log_dir).unwrap();
 
             let mut file = std::fs::OpenOptions::new()
                 .append(true)
                 .create(true)
-                .open("logs/Logs.txt")
+                .open("sorter_logs/logs.txt")
                 .expect("create failed");
             
             file.write_all(format!("{:?}", file_name).as_bytes()).expect("write failed");
