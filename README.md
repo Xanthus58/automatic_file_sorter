@@ -9,10 +9,12 @@ Note: The program will crash if the file its attempting to move is already in us
 -Windows-
 1. Download "WIN_PORTABLE_automatic_file_sorter_1.2.0.exe"
 2. Move the program into your desired directory
+
 -Windows 10-
 1. Hold shift and right click
 2. Click open terminal window here
 3. Drag and drop the program into your terminal window
+
 -Windows 11- 
 1. Open "WIN_PORTABLE_automatic_file_sorter_1.2.0.exe"
 
