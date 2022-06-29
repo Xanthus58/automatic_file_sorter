@@ -24,7 +24,6 @@ jobs:
     name: Push Commit
     runs-on: ubuntu-latest
     steps:
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with: 
-        commit_message: Automated Doc Update
-  
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with: 
+          commit_message: Automated Doc Update
