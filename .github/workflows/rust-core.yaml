@@ -10,8 +10,6 @@ name: Rust-Core
 on:
   push:
     branches: [ "*" ]
-  pull_request:
-    types: [opened, reopened]
   
 jobs:
 # Ensure the application can be built and run successfully
