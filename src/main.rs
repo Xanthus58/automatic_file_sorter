@@ -117,6 +117,8 @@ fn main() {
             green!("{} ", path.display());
             print!("Moved to ");
             red!("{}\n", download_dir.display())
+
+            concern
         }
     }
 }
