@@ -3,7 +3,7 @@ on:
     branches: [ "*" ]
   pull_request:
     types: [opened, reopened]
-    
+
 jobs:
   build_docs:
     name: Generate and push docs
