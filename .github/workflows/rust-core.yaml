@@ -25,15 +25,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "master" ]
-  schedule:
-    - cron: '19 20 * * 3'
-
 jobs:
   rust-clippy-analyze:
     name: Run rust-clippy analyzing
@@ -69,13 +60,6 @@ jobs:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "master" ]
-
 jobs:
   build_and_test:
     name: Generate and push docs
@@ -92,13 +76,6 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with: 
           commit_message: Automated Doc Update
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "master" ]
 
 jobs:
   format:
