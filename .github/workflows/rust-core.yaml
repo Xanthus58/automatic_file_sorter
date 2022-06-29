@@ -7,9 +7,7 @@
 
 name: Rust-Core
 
-on:
-  push
-  pull_request
+on: push, pull_request
 
 jobs:
 # Runs cargo doc and cargo fmt then pushes any changes to the github repo
