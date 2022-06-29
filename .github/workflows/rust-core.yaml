@@ -16,8 +16,7 @@ on:
 jobs:
 # Ensure the application can be built and run successfully
   build:
-    needs: format
-    name: Run Cargo build
+    name: Rust-Core-Utils
     runs-on: ubuntu-latest
     steps:
     - uses: Xanthus58/rust-core@1.0.0
