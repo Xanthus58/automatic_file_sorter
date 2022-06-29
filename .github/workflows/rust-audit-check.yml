@@ -9,6 +9,7 @@ on:
   
 jobs:
   security_audit:
+    name: Run Security-audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

@@ -9,6 +9,7 @@ name: Rust-fmt
 
 jobs:
   format:
+    name: Run Cargo fmt
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
