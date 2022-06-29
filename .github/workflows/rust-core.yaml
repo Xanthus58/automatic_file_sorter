@@ -8,14 +8,11 @@
 name: Rust-Core
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "master" ]
-  
+  push
+  pull_request
+
 jobs:
-# Runs cargo doc and pushes its changes to the gihub repo
+# Runs cargo doc and cargo fmt then pushes any changes to the github repo
   build_docs:
     name: Generate and push docs
     runs-on: ubuntu-latest
@@ -31,10 +28,18 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with: 
           commit_message: Automated Doc Update
+      uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+            components: rustfmt
+            override: true
+      - uses: mbrobbel/rustfmt-check@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 # Ensure the application can be built and run successfully
   build:
-    needs: build_docs
     name: Run Cargo build
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +51,6 @@ jobs:
 
 # Ensures theres no security vulnerabilities in the programs dependencies 
   security_audit:
-    needs: build_docs
     name: Run Security-audit
     runs-on: ubuntu-latest
     steps:
@@ -57,7 +61,6 @@ jobs:
   
 # Runs rust clippy for any and all suggestions
   rust-clippy-analyze:
-    needs: build_docs
     name: Run rust-clippy analyzing
     runs-on: ubuntu-latest
     permissions:
@@ -90,19 +93,3 @@ jobs:
         with:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
-
-# Runs cargo fmt and pushes any changes to the github repo
-  format:
-    name: Run Cargo fmt
-    needs: build_docs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-            toolchain: stable
-            components: rustfmt
-            override: true
-      - uses: mbrobbel/rustfmt-check@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
