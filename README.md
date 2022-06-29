@@ -1,3 +1,4 @@
+![visitors](https://visitor-badge.glitch.me/badge?page_id=kogisin/Xanthus58$Xanthus58$automatic_file_sorter)
 ### Welcome to the automatic file sorter
 Its a small program; download the exe, drag and drop it into the folder you want sorted and itll go trough and automaticly sort all file types into respective folders for you.
 
