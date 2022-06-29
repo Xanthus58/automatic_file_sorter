@@ -57,11 +57,6 @@ fn main() {
                 Some(ext) if ext == "cfg" => "Files",
                 // Doccuments
                 Some(ext) if ext == "txt" => "Documents",
-                Some(ext) if ext == "pdf" => "Documents",
-                Some(ext) if ext == "doc" => "Documents",
-                Some(ext) if ext == "docx" => "Documents",
-                Some(ext) if ext == "htm" => "Documents",
-                Some(ext) if ext == "ppt" => "Documents",
                 Some(ext) if ext == "pptx" => "Documents",
                 Some(ext) if ext == "clsx" => "Documents",
                 // Torrents
@@ -109,7 +104,7 @@ fn main() {
             file.write_all(format!("{:?}", file_name).as_bytes())
                 .expect("write failed");
             file.write_all(" Moved to ".as_bytes())
-                .expect("write failed");
+                .expect("write failed")
             file.write_all(format!("{:?}\n", download_dir.display()).as_bytes())
                 .expect("write failed");
 
