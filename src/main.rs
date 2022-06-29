@@ -1,11 +1,11 @@
 #![allow(unused_variables)]
 #![allow(dead_code)]
 
-use std::{fs,io::Write};
-use std::path::Path;
 use colour::*;
+use std::path::Path;
+use std::{fs, io::Write};
 
-fn cls(){
+fn cls() {
     print!("{esc}c", esc = 27 as char);
 }
 
@@ -14,14 +14,13 @@ fn cls(){
 //Email me at 'Xanthus58@protonmail.com'
 //You can see more information on my website https://xanthus58.github.io/Xanthus58/
 
-
 fn main() {
     cls();
     println!("Made by Xanthus58");
     println!("You can see more information on my website https://xanthus58.github.io/Xanthus58/");
     println!("If you notice any files not being sorted make an issue here https://github.com/Xanthus58/automatic_file_sorter/issues");
     println!("\n-Logs-");
-    loop{
+    loop {
         let entries = fs::read_dir("./").unwrap();
         for entry in entries {
             let path = entry.unwrap().path();
@@ -53,6 +52,7 @@ fn main() {
                 // Files
                 Some(ext) if ext == "zip" => "Files",
                 Some(ext) if ext == "rar" => "Files",
+                Some(ext) if ext == "tar" => "Files",
                 Some(ext) if ext == "7z" => "Files",
                 Some(ext) if ext == "cfg" => "Files",
                 // Doccuments
@@ -105,15 +105,18 @@ fn main() {
                 .create(true)
                 .open("sorter_logs/logs.txt")
                 .expect("create failed");
-            
-            file.write_all(format!("{:?}", file_name).as_bytes()).expect("write failed");
-            file.write_all(" Moved to ".as_bytes()).expect("write failed");
-            file.write_all(format!("{:?}\n", download_dir.display()).as_bytes()).expect("write failed");
-            
+
+            file.write_all(format!("{:?}", file_name).as_bytes())
+                .expect("write failed");
+            file.write_all(" Moved to ".as_bytes())
+                .expect("write failed");
+            file.write_all(format!("{:?}\n", download_dir.display()).as_bytes())
+                .expect("write failed");
+
             print!("Name: ");
-            green!("{} ",path.display());
+            green!("{} ", path.display());
             print!("Moved to ");
-            red!("{}\n",download_dir.display());
+            red!("{}\n", download_dir.display());
         }
     }
 }
