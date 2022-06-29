@@ -16,7 +16,7 @@ on:
   
 jobs:
 # Runs cargo doc and pushes its changes to the gihub repo
-  build_and_test:
+  build_docs:
     name: Generate and push docs
     runs-on: ubuntu-latest
     steps:
@@ -34,6 +34,7 @@ jobs:
 
 # Ensure the application can be built and run successfully
   build:
+    needs: build_docs
     name: Run Cargo build
     runs-on: ubuntu-latest
     steps:
@@ -45,6 +46,7 @@ jobs:
 
 # Ensures theres no security vulnerabilities in the programs dependencies 
   security_audit:
+    needs: build_docs
     name: Run Security-audit
     runs-on: ubuntu-latest
     steps:
@@ -55,6 +57,7 @@ jobs:
   
 # Runs rust clippy for any and all suggestions
   rust-clippy-analyze:
+    needs: build_docs
     name: Run rust-clippy analyzing
     runs-on: ubuntu-latest
     permissions:
@@ -91,6 +94,7 @@ jobs:
 # Runs cargo fmt and pushes any changes to the github repo
   format:
     name: Run Cargo fmt
+    needs: build_docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
