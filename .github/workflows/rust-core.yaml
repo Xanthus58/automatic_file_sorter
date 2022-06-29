@@ -20,3 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: Xanthus58/rust-core@1.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
