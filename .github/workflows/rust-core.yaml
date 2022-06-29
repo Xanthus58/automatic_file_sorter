@@ -8,37 +8,16 @@
 name: Rust-Core
 
 on:
-  push
-
+  push:
+    branches: [ "master" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "master" ]
+  
 jobs:
-# Runs cargo doc and cargo fmt then pushes any changes to the github repo
-  build_docs:
-    name: Generate and push docs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      - uses: actions-rs/cargo@v1
-        with:
-          command: doc
-          args: --target-dir docs 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with: 
-          commit_message: Automated Doc Update
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-            toolchain: stable
-            components: rustfmt
-            override: true
-      - uses: mbrobbel/rustfmt-check@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
 # Ensure the application can be built and run successfully
   build:
+
     name: Run Cargo build
     runs-on: ubuntu-latest
     steps:
@@ -92,3 +71,18 @@ jobs:
         with:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
+
+# Runs cargo fmt and pushes any changes to the github repo
+  format:
+    name: Run Cargo fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+            components: rustfmt
+            override: true
+      - uses: mbrobbel/rustfmt-check@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
