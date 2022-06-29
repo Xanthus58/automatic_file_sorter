@@ -121,10 +121,6 @@
 <span id="116">116</span>
 <span id="117">117</span>
 <span id="118">118</span>
-<span id="119">119</span>
-<span id="120">120</span>
-<span id="121">121</span>
-<span id="122">122</span>
 </pre><pre class="rust"><code><span class="attribute">#![<span class="ident">allow</span>(<span class="ident">unused_variables</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>)]</span>
 
@@ -227,11 +223,7 @@
             <span class="kw">let</span> <span class="ident">log_file</span> <span class="op">=</span> <span class="string">&quot;/logs.txt&quot;</span>;
             <span class="ident">fs::create_dir_all</span>(<span class="ident">log_dir</span>).<span class="ident">unwrap</span>();
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">std::fs::OpenOptions::new</span>()
-                .<span class="ident">append</span>(<span class="bool-val">true</span>)
-                .<span class="ident">create</span>(<span class="bool-val">true</span>)
-                .<span class="ident">open</span>(<span class="string">&quot;sorter_logs/logs.txt&quot;</span>)
-                .<span class="ident">expect</span>(<span class="string">&quot;create failed&quot;</span>);
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">std::fs::OpenOptions::new</span>().<span class="ident">append</span>(<span class="bool-val">true</span>).<span class="ident">create</span>(<span class="bool-val">true</span>).<span class="ident">open</span>(<span class="string">&quot;sorter_logs/logs.txt&quot;</span>).<span class="ident">expect</span>(<span class="string">&quot;create failed&quot;</span>);
 
             <span class="ident">file</span>.<span class="ident">write_all</span>(<span class="macro">format!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">file_name</span>).<span class="ident">as_bytes</span>())
                 .<span class="ident">expect</span>(<span class="string">&quot;write failed&quot;</span>);
