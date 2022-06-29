@@ -16,7 +16,6 @@ on:
 jobs:
 # Ensure the application can be built and run successfully
   build:
-    needs: format
     name: Run Cargo build
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +27,6 @@ jobs:
 
 # Ensures theres no security vulnerabilities in the programs dependencies 
   security_audit:
-    needs: format
     name: Run Security-audit
     runs-on: ubuntu-latest
     steps:
@@ -39,7 +37,6 @@ jobs:
   
 # Runs rust clippy for any and all suggestions
   rust-clippy-analyze:
-    needs: format
     name: Run rust-clippy analyzing
     runs-on: ubuntu-latest
     permissions:
