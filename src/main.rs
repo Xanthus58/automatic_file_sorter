@@ -100,11 +100,18 @@ fn main() {
             let log_file = "/logs.txt";
             fs::create_dir_all(log_dir).unwrap();
 
-            let mut file = std::fs::OpenOptions::new().append(true).create(true).open("sorter_logs/logs.txt").expect("create failed");
+            let mut file = std::fs::OpenOptions::new()
+                .append(true)
+                .create(true)
+                .open("sorter_logs/logs.txt")
+                .expect("create failed");
 
-            file.write_all(format!("{:?}", file_name).as_bytes()).expect("write failed");
-            file.write_all(" Moved to ".as_bytes()).expect("write failed");
-            file.write_all(format!("{:?}\n", download_dir.display()).as_bytes()).expect("write failed");
+            file.write_all(format!("{:?}", file_name).as_bytes())
+                .expect("write failed");
+            file.write_all(" Moved to ".as_bytes())
+                .expect("write failed");
+            file.write_all(format!("{:?}\n", download_dir.display()).as_bytes())
+                .expect("write failed");
 
             print!("Name: ");
             green!("{} ", path.display());
