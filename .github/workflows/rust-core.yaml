@@ -9,10 +9,9 @@ name: Rust-Core
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "*" ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "master" ]
+    types: [opened, reopened]
   
 jobs:
 # Ensure the application can be built and run successfully
