@@ -10,7 +10,7 @@ format:
               override: true
         - uses: LoliGothick/rustfmt-check@v0.2
           with:
-              token: ${{ secrets.GITHUB_TOKEN }}
+              token: ${{ secrets.TOKEN }}
               flags: --all
               options: --manifest-path=Cargo.toml
               args: --config-path=rustfmt.toml
