@@ -3,8 +3,7 @@
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+# separate terms of service, privacy policy, and support.
 
 name: Rust-Core
 
@@ -16,6 +15,24 @@ on:
     branches: [ "master" ]
   
 jobs:
+# Runs cargo doc and pushes its changes to the gihub repo
+  build_and_test:
+    name: Generate and push docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - uses: actions-rs/cargo@v1
+        with:
+          command: doc
+          args: --target-dir docs 
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with: 
+          commit_message: Automated Doc Update
+
+# Ensure the application can be built and run successfully
   build:
     name: Run Cargo build
     runs-on: ubuntu-latest
@@ -25,7 +42,8 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
-      
+
+# Ensures theres no security vulnerabilities in the programs dependencies 
   security_audit:
     name: Run Security-audit
     runs-on: ubuntu-latest
@@ -34,6 +52,8 @@ jobs:
       - uses: actions-rs/audit-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+  
+# Runs rust clippy for any and all suggestions
   rust-clippy-analyze:
     name: Run rust-clippy analyzing
     runs-on: ubuntu-latest
@@ -67,21 +87,8 @@ jobs:
         with:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
-  build_and_test:
-    name: Generate and push docs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      - uses: actions-rs/cargo@v1
-        with:
-          command: doc
-          args: --target-dir docs 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with: 
-          commit_message: Automated Doc Update
+
+# Runs cargo fmt and pushes any changes to the github repo
   format:
     name: Run Cargo fmt
     runs-on: ubuntu-latest
