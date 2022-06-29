@@ -9,7 +9,7 @@ Note: The program will crash if the file its attempting to move is already in us
 > Ensure all programs that may be using the files you wish to sort are closed.
 
 -Windows-
-1. Download "WIN_PORTABLE_automatic_file_sorter_1.2.0.exe"
+1. Download "WIN_PORTABLE_automatic_file_sorter_<VERSION NUMBER>.exe"
 2. Move the program into your desired directory
 
 -Windows 10-
@@ -18,15 +18,15 @@ Note: The program will crash if the file its attempting to move is already in us
 3. Drag and drop the program into your terminal window
 
 -Windows 11- 
-1. Open "WIN_PORTABLE_automatic_file_sorter_1.2.0.exe"
+1. Open "WIN_PORTABLE_automatic_file_sorter_<VERSION NUMBER>.exe"
 
 -Linux-
 1. Download the file.
-5. Right click "LINUX_PORTABLE_automatic_file_sorter_1.2.0"
+5. Right click "LINUX_PORTABLE_automatic_file_sorter_<VERSION NUMBER>"
 6. Allow to run as program
 7. Move the program into desired directory
 8. Open a terminal in the desired directory
-9. Run "LINUX_PORTABLE_automatic_file_sorter_1.2.0"
+9. Run "LINUX_PORTABLE_automatic_file_sorter_<VERSION NUMBER>"
 
 
 ## Before
