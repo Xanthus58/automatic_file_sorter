@@ -57,7 +57,7 @@ fn main() {
                 Some(ext) if ext == "cfg" => "Files",
                 // Doccuments
                 Some(ext) if ext == "txt" => "Documents",
-                Some(ext) if ext == "pptx" => "Documents",
+                Some(ext) if ext == "pptx" => "Documents"
                 Some(ext) if ext == "clsx" => "Documents",
                 // Torrents
                 Some(ext) if ext == "torrent" => "Torrents",
