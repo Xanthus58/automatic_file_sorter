@@ -24,8 +24,6 @@ jobs:
       - uses: actions-rs/audit-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
-jobs:
   rust-clippy-analyze:
     name: Run rust-clippy analyzing
     runs-on: ubuntu-latest
@@ -59,8 +57,6 @@ jobs:
         with:
           sarif_file: rust-clippy-results.sarif
           wait-for-processing: true
-
-jobs:
   build_and_test:
     name: Generate and push docs
     runs-on: ubuntu-latest
@@ -76,8 +72,6 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with: 
           commit_message: Automated Doc Update
-
-jobs:
   format:
     name: Run Cargo fmt
     runs-on: ubuntu-latest
