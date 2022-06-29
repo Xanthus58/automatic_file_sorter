@@ -93,18 +93,14 @@ fn main() {
                 _ => continue,
             };
             let download_dir = Path::new(download_dir);
-            fs::create_dir_all(download_dir).unwrap();
+            fs::create_dir_all(download_dir).unwrap()
             fs::rename(&path, download_dir.join(file_name)).unwrap();
 
             let log_dir = "sorter_logs";
             let log_file = "/logs.txt";
             fs::create_dir_all(log_dir).unwrap();
 
-            let mut file = std::fs::OpenOptions::new()
-                .append(true)
-                .create(true)
-                .open("sorter_logs/logs.txt")
-                .expect("create failed");
+            let mut file = std::fs::OpenOptions::new().append(true).create(true).open("sorter_logs/logs.txt").expect("create failed");
 
             file.write_all(format!("{:?}", file_name).as_bytes())
                 .expect("write failed");
